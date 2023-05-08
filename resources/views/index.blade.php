@@ -1,3 +1,4 @@
+// page principale
 @extends('forme')
 
 @section('title') Accueil @endsection
