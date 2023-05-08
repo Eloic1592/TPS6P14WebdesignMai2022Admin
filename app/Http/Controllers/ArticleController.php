@@ -37,7 +37,6 @@ class ArticleController extends Controller
             if ($request->hasFile('image') && $request->file('image')->isValid()) {
                 $filename = $request->file('image')->getClientOriginalName();
                 $path = $request->file('image')->storeAs('public/assets/img',$filename);
-            }
 
         $Article=Article::create(
             [
@@ -49,12 +48,23 @@ class ArticleController extends Controller
                 'image'=>$request->file('image')->getClientOriginalName()
             ]
         );
+        }else{
+            $Article=Article::create(
+                [
+                    'categorie'=>$request->input('categorie'),
+                    'titre'=>$request->input('titre'),
+                    'resume'=>$request->input('resume'),
+                    'contenu'=>$request->input('contenu'),
+                    'idauteur'=>$request->input('idauteur')
+                ]
+            );
+        }
 
         DB::table('publication')->insert([
             'idarticle' =>$Article->id,
         ]);
 
-        return redirect()->route('accueilauteur')->with('success','Informations enregistrees');
+        return redirect()->route('auteur.accueilauteur')->with('success','Informations enregistrees');
      }
 
     // Modifier
