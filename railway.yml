@@ -1,0 +1,29 @@
+services:
+  app:
+    name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env:
+      APP_NAME: Laravel
+      APP_ENV: local
+      APP_KEY: base64:77Pn6FFgoOZFIqS4ttvLMOckvo+Eh00tjiPjbZJVlNE=
+      # autres variables d'environnement de votre application Laravel...
+      DB_CONNECTION: pgsql
+      DB_HOST: dumbo.db.elephantsql.com
+      DB_PORT: 5432
+      DB_DATABASE: jhjzwbhx
+      DB_USERNAME: jhjzwbhx
+      DB_PASSWORD: XVtJQTu3zWm8VskpOgOYXIf3YMquduY_
+    ports:
+      - 8080:8080
+    command: php artisan serve --host 0.0.0.0 --port 8080
+  db:
+    name: gestionia
+    image: postgres
+    env:
+      POSTGRES_DB: jhjzwbhx
+      POSTGRES_USER: jhjzwbhx
+      POSTGRES_PASSWORD: XVtJQTu3zWm8VskpOgOYXIf3YMquduY_
+    ports:
+      - 5432:5432
