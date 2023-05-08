@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,18 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', \App\Http\Controllers\ArticleController::class . '@index')->name('index');
+Route::get('/',App\Http\Controllers\AuteurController::class . '@index')->name('index');
+
+Route::get('/mainpage', \App\Http\Controllers\AuteurController::class . '@accueilauteur')->name('auteur.accueilauteur');
+
+Route::get('/newarticlecreate', \App\Http\Controllers\ArticleController::class . '@redirectajout')->name('article.ajouterarticle');
+
+Route::post('/find', \App\Http\Controllers\ArticleController::class . '@recherchearticle')->name('article.findarticle');
+
+Route::get('/edit=ART/{id}article', \App\Http\Controllers\ArticleController::class . '@getmodif')->name('article.modifyarticle');
+
+Route::get('/publish-ART/{id}article', \App\Http\Controllers\ArticleController::class . '@publier')->name('article.publisharticle');
+
 
 // Fonction get generalisee
 Route::get('/{controller}/{method}/{param?}', function ($controller, $method, $param = null) {
@@ -31,3 +43,4 @@ Route::post('/{controller}/{method}', function ($controller, $method, Request $r
     $controller = app()->make("App\\Http\\Controllers\\{$controller}Controller");
     return $controller->$method($request);
 });
+
