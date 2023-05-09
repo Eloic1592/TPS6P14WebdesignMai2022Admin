@@ -51,7 +51,7 @@ class Article extends Model
     }
     public function getDatepublicAttribute(){
         $Publication=Publication::where('idarticle', $this->attributes['id'])->first();
-        return " <span class='badge bg-light text-dark'>Publie le ".$Publication->created_at."</span>";
+        return " <p><span class='badge bg-light text-dark'>Publie le ".$Publication->created_at."</span></p>";
         }
 
 }
