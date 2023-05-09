@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     env:
       APP_NAME: Laravel
-      APP_ENV: local
+      APP_ENV: production
       APP_KEY: base64:77Pn6FFgoOZFIqS4ttvLMOckvo+Eh00tjiPjbZJVlNE=
       # autres variables d'environnement de votre application Laravel...
       DB_CONNECTION: pgsql
