@@ -26,21 +26,19 @@ Route::get('/edit=ART/{id}article', \App\Http\Controllers\ArticleController::cla
 
 Route::get('/publish-ART/{id}article', \App\Http\Controllers\ArticleController::class . '@publier')->name('article.publisharticle');
 
+Route::get('/storage/{filename}', function ($filename)
+{
+    $path = storage_path('app/public/assets/img/' . $filename);
 
-// Fonction get generalisee
-Route::get('/{controller}/{method}/{param?}', function ($controller, $method, $param = null) {
-    $controller = app()->make("App\\Http\\Controllers\\{$controller}Controller");
-    if ($param) {
-        return $controller->$method($param);
-    } else {
-        return $controller->$method();
+    if (!File::exists($path)) {
+        abort(404);
     }
-})->where('param', '(.*)');
 
+    $file = File::get($path);
+    $type = File::mimeType($path);
 
-// Fonction post generalisee
-Route::post('/{controller}/{method}', function ($controller, $method, Request $request) {
-    $controller = app()->make("App\\Http\\Controllers\\{$controller}Controller");
-    return $controller->$method($request);
-});
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
 
+    return $response;
+})->name('storage');
