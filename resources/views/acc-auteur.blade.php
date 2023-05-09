@@ -66,6 +66,7 @@
                         <div class="card-body">
                         <h5 class="card-title">{{ $liste_article->titre }}</h5>
                         <p class="card-text">{{ $liste_article->resume }}</p>
+                        {!! $liste_article->Datepublic !!}
                         {!! $liste_article->Modifier !!}
                         {!! $liste_article->Publier !!}
 
