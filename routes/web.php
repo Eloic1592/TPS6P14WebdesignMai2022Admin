@@ -26,6 +26,9 @@ Route::get('/edit=ART/{id}article', \App\Http\Controllers\ArticleController::cla
 
 Route::get('/publish-ART/{id}article', \App\Http\Controllers\ArticleController::class . '@publier')->name('article.publisharticle');
 
+Route::get('/disconnect', \App\Http\Controllers\AuteurController::class . '@deconnexion')->name('auteur.deconnexion');
+
+
 Route::get('/storage/{filename}', function ($filename)
 {
     $path = storage_path('app/public/assets/img/' . $filename);

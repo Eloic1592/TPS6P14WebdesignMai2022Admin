@@ -54,7 +54,7 @@
                     </li>
 
                     <li>
-                    <a class="dropdown-item d-flex align-items-center" href="{{ url('Utilisateur/deconnexion')}}">
+                    <a class="dropdown-item d-flex align-items-center" href="{{ route('auteur.deconnexion')}}">
                     <i class="bi bi-box-arrow-righ"></i>
                         <span>Deconnexion</span>
                     </a>
