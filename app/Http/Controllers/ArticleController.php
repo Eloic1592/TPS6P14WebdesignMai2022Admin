@@ -64,7 +64,7 @@ class ArticleController extends Controller
             'idarticle' =>$Article->id,
         ]);
 
-        return redirect()->route('auteur.accueilauteur')->with('success','Informations enregistrees');
+        return redirect()->back()->with('success','Informations enregistrees');
      }
 
     // Modifier
