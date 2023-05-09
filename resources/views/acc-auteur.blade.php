@@ -88,6 +88,7 @@
                         <div class="card-body">
                         <h5 class="card-title">{{ $recherchearticle->titre }}</h5>
                         <p class="card-text">{{ $recherchearticle->resume }}</p>
+                        {!! $recherchearticle->Datepublic !!}
                         {!! $recherchearticle->Modifier !!}
                         {!! $recherchearticle->Publier !!}
 

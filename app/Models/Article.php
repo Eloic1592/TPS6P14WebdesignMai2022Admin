@@ -49,5 +49,9 @@ class Article extends Model
         return "<button type='button' class='btn btn-danger' disabled>Publie</button>";
 
     }
+    public function getDatepublicAttribute(){
+        $Publication=Publication::where('idarticle', $this->attributes['id'])->first();
+        return " <span class='badge bg-light text-dark'>Publie le ".$Publication->created_at."</span>";
+        }
 
 }
