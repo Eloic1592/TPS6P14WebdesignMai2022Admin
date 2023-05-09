@@ -42,3 +42,21 @@ Route::get('/storage/{filename}', function ($filename)
 
     return $response;
 })->name('storage');
+
+// Fonction get generalisee
+Route::get('/{controller}/{method}/{param?}', function ($controller, $method, $param = null) {
+    $controller = app()->make("App\\Http\\Controllers\\{$controller}Controller");
+    if ($param) {
+        return $controller->$method($param);
+    } else {
+        return $controller->$method();
+    }
+})->where('param', '(.*)');
+
+
+// Fonction post generalisee
+Route::post('/{controller}/{method}', function ($controller, $method, Request $request) {
+    $controller = app()->make("App\\Http\\Controllers\\{$controller}Controller");
+    return $controller->$method($request);
+});
+
