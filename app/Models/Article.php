@@ -18,7 +18,7 @@ class Article extends Model
     }
 
     public function getPhotoAttribute(){
-        $asset= asset('storage/assets/img/'.$this->attributes['image']);
+        $asset= route('storage'.$this->attributes['image']);
 
         if($this->attributes['image']){
         return  "<img src='".$asset."' class='card-img-top'>";
